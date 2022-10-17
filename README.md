@@ -18,6 +18,8 @@ Criei uma aplicação para auxiliar na organização de tarefas do seu dia-a-dia
 
 ## 💻 Como iniciar
 
+- Para realizar o download e acessar os arquivos, rode o comando `git clone https://github.com/luizstange1/viaTasks.git`.
+
 - Para instalar as dependências, rode o comando `yarn`.
 
 - Para iniciar o projeto, rode o comando `yarn run dev`.
