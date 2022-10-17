@@ -80,8 +80,8 @@ export const SelectPriorityContainer = styled.div`
 `;
 
 export const SelectPriorityTask = styled.select`
-  width: 8rem;
-  height: 2rem;
+  width: 70%;
+  height: 2.5rem;
   border-radius: 8px;
   border: 0;
 `;

@@ -23,10 +23,7 @@ export function ModalEditTaskTitle({
   }
 
   function handleCheckEmptyInput(value: any) {
-    if (!value) {
-      return false;
-    }
-
+    if (!value.trim()) return false;
     return true;
   }
 
