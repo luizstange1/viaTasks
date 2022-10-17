@@ -45,10 +45,7 @@ export function ModalAddTask({ isOpen, closeModal }: ModalAddTasksProps) {
   }
 
   function handleCheckEmptyInput(value: any) {
-    if (!value) {
-      return false;
-    }
-
+    if (!value.trim()) return false;
     return true;
   }
 
