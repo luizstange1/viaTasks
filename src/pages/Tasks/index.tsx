@@ -11,12 +11,6 @@ export function Tasks() {
   const { tasks, setTasks } = useContext(TasksContext);
   const [filter, setFilter] = useState("Todas");
   const [selectedTask, setSelectedTask] = useState<Task | null>(null);
-  const [selectFilterAllTasks, setSelectFilterAllTasks] =
-    useState<boolean>(true);
-  const [selectFilterInProgressTasks, setSelectFilterInProgressTasks] =
-    useState<boolean>(false);
-  const [selectCompletedTasksFilter, setSelectCompletedTasksFilter] =
-    useState<boolean>(false);
   const [isOpenModalTitleEdit, setIsOpenModalTitleEdit] =
     useState<boolean>(false);
   const [isOpenModalAddTask, setIsOpenModalAddTask] = useState<boolean>(false);
@@ -81,27 +75,6 @@ export function Tasks() {
     localStorage.setItem("@viaTasks:tasks", JSON.stringify(updatedTasks));
   }
 
-  function handleClickFilterAllTasks() {
-    setFilter("Todas");
-    setSelectFilterAllTasks(true);
-    setSelectFilterInProgressTasks(false);
-    setSelectCompletedTasksFilter(false);
-  }
-
-  function handleClickFilterTasksInProgress() {
-    setFilter("Em andamento");
-    setSelectFilterInProgressTasks(true);
-    setSelectCompletedTasksFilter(false);
-    setSelectFilterAllTasks(false);
-  }
-
-  function handleClickFilterCompletedTasks() {
-    setFilter("Concluída");
-    setSelectCompletedTasksFilter(true);
-    setSelectFilterAllTasks(false);
-    setSelectFilterInProgressTasks(false);
-  }
-
   const tasksAllList =
     filter === "Em andamento"
       ? tasks.filter((task) => task.status === "Em andamento")
@@ -126,20 +99,26 @@ export function Tasks() {
           <S.ContainerTasksFilters>
             Filtrar por:
             <S.FilterAllTasks
-              onClick={handleClickFilterAllTasks}
-              isSelected={selectFilterAllTasks}
+              onClick={() => {
+                setFilter("Todas");
+              }}
+              isSelected={filter === "Todas" ? true : false}
             >
               Todas | {countAllTasks}
             </S.FilterAllTasks>
             <S.FilterTasksInProgress
-              onClick={handleClickFilterTasksInProgress}
-              isSelected={selectFilterInProgressTasks}
+              onClick={() => {
+                setFilter("Em andamento");
+              }}
+              isSelected={filter === "Em andamento" ? true : false}
             >
               Em andamento | {countTasksInProgress}
             </S.FilterTasksInProgress>
             <S.FilterCompletedTasks
-              onClick={handleClickFilterCompletedTasks}
-              isSelected={selectCompletedTasksFilter}
+              onClick={() => {
+                setFilter("Concluída");
+              }}
+              isSelected={filter === "Concluída" ? true : false}
             >
               Concluídas | {countCompletedTasks}
             </S.FilterCompletedTasks>
